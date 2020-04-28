@@ -172,6 +172,7 @@ namespace WS2812
             byte convertValueR = pixels[index].R;
             byte convertValueB = pixels[index].B;
             byte[] bits = new byte[24];
+            //Get all 24 bits of the changed pixel
             for (int i = 0; i < 8; i++)
             {
                 bits[i] = (byte)(((convertValueG & (1u << 7)) != 0) ? 1 : 0);
@@ -189,6 +190,10 @@ namespace WS2812
 
         private void AddBitsToCommand(byte[] bits, int index)
         {
+            //Every bit is represented as command. Every command contains 4 bytes the first 2 bytes are for the high signal and the second 2 for the low.
+            //In every paire the first is the duration of the signal and the second is the level of the signal high/low.
+            //Here we construct the binary command by setting durations for every bit of the pixel. So we have total of 86 bytes for every bit that we update.
+            //The levels are previously filled for all pixels so here we set only the durations.
             for (int i = 0; i < bits.Length; i++)
             {
                 if (bits[i] == 1)
