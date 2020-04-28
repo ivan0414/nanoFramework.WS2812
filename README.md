@@ -27,3 +27,6 @@ for(; ;)
     System.Threading.Thread.Sleep(10);
 }
 ```
+
+To do:
+- Make it work correct with 4 byte pixels RGB + W
