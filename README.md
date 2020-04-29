@@ -10,7 +10,7 @@ Here is an example of code how to make rainbow effect:
 
 ```C#
 int ledCount = 90;
-PixelController controller = new PixelController(18, 10, false);
+PixelController controller = new PixelController(18, ledCount, false);
 
 int step = 360 / ledCount;
 var hue = 0;
